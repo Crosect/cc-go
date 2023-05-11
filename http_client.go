@@ -1,4 +1,4 @@
-package cc_go
+package ccgo
 
 import (
 	"github.com/crosect/cc-go/config"

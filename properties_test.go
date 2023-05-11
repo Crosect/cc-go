@@ -1,4 +1,4 @@
-package cc_go
+package ccgo
 
 import (
 	assert "github.com/stretchr/testify/require"

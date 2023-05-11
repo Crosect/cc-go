@@ -21,7 +21,7 @@ type SampleProperties struct {
 	// We use github.com/go-playground/validator to validate properties
 	Field1 string `validate:"required"`
 
-	// set default for properties
+	// We use https://github.com/zenthangplus/defaults to set default for properties
 	Field2 int `default:"10"`
 
 	// We use github.com/mitchellh/mapstructure to bind config to properties
