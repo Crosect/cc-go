@@ -44,7 +44,7 @@ func All() fx.Option {
 		// When you want to enable http client auto config with contextual client by default
 		ccgo.HttpClientOpt(),
 
-		// When you want to tell GoLib to load your properties.
+		// When you want to tell cc-go to load your properties.
 		ccgo.ProvideProps(NewSampleProperties),
 
 		// When you want to declare a service

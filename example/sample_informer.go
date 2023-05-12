@@ -7,7 +7,7 @@ package example
 import "github.com/crosect/cc-go/actuator"
 
 // NewSampleInformer
-// Use golib.ProvideInformer(NewSampleInformer) to register an informer.
+// Use ccgo.ProvideInformer(NewSampleInformer) to register an informer.
 // In this example, the /actuator/info endpoint with return:
 //
 //	{

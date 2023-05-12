@@ -10,7 +10,7 @@ import (
 // ==================================================
 
 // NewSampleProperties
-// Use golib.ProvideProps(NewSampleProperties) to declare a properties
+// Use ccgo.ProvideProps(NewSampleProperties) to declare a properties
 func NewSampleProperties(loader config.Loader) (*SampleProperties, error) {
 	props := SampleProperties{}
 	err := loader.Bind(&props)

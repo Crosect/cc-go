@@ -1,4 +1,4 @@
-# Golib
+# CC-GO
 
 Common core for Golang project.
 
@@ -25,7 +25,7 @@ See some simple examples:
 - [Register an informer](./example/sample_informer.go)
 - [Register a health checker](./example/sample_health_checker.go)
 
-### Configuration
+### Configurationl
 
 #### 1. Environment variables
 

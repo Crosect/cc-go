@@ -10,7 +10,7 @@ import (
 // ==================================================
 
 // NewSampleListener
-// Use golib.ProvideEventListener(NewSampleListener) to declare a listener
+// Use ccgo.ProvideEventListener(NewSampleListener) to declare a listener
 func NewSampleListener(service *SampleService) pubsub.Subscriber {
 	return &SampleListener{service: service}
 }

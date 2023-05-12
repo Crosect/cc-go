@@ -60,12 +60,12 @@ func (l *ViperLoader) Bind(propertiesList ...Properties) error {
 
 		if err := l.decodeWithDefaults(props); err != nil {
 			return errors.WithMessage(err,
-				fmt.Sprintf("[GoLib-error] Error when decode config key [%s] to [%s]", props.Prefix(), propsName))
+				fmt.Sprintf("[cc-go-error] Error when decode config key [%s] to [%s]", props.Prefix(), propsName))
 		}
 
 		if err := l.validateProps(props); err != nil {
 			return errors.WithMessage(err,
-				fmt.Sprintf("[GoLib-error] Error when validate properties [%s]", propsName))
+				fmt.Sprintf("[cc-go-error] Error when validate properties [%s]", propsName))
 		}
 
 		// Run post-binding life cycle
@@ -74,7 +74,7 @@ func (l *ViperLoader) Bind(propertiesList ...Properties) error {
 				return err
 			}
 		}
-		l.option.DebugFunc("[GoLib-debug] Properties [%s] was loaded with prefix [%s]", propsName, props.Prefix())
+		l.option.DebugFunc("[cc-go-debug] Properties [%s] was loaded with prefix [%s]", propsName, props.Prefix())
 	}
 	return nil
 }
@@ -135,7 +135,7 @@ func (l ViperLoader) decodeWithDefaults(props Properties) error {
 }
 
 func loadViper(reader ProfileReader, option Option, propertiesList []Properties) (*viper.Viper, error) {
-	option.DebugFunc("[GoLib-debug] Loading active profiles [%s] in paths [%s] with format [%s]",
+	option.DebugFunc("[cc-go-debug] Loading active profiles [%s] in paths [%s] with format [%s]",
 		strings.Join(option.ActiveProfiles, ", "), strings.Join(option.ConfigPaths, ", "), option.ConfigFormat)
 
 	vi := viper.NewWithOptions(viper.KeyDelimiter(option.KeyDelimiter))
@@ -167,10 +167,10 @@ func discoverEnvKeys(vi *viper.Viper, option Option, propertiesList []Properties
 		defaultMap := convertSliceToNestedMap(strings.Split(normalizeKey(props.Prefix()), option.KeyDelimiter), propsMap, nil)
 		for key, env := range buildEnvKeys(defaultMap, option.KeyDelimiter, "_", "", "") {
 			if err := vi.BindEnv(key, env); err != nil {
-				return fmt.Errorf("[GoLib-error] Error when build env keys properties [%s]: %v", propsName, err)
+				return fmt.Errorf("[cc-go-error] Error when build env keys properties [%s]: %v", propsName, err)
 			}
 		}
-		option.DebugFunc("[GoLib-debug] Default value was discovered for properties [%s]", propsName)
+		option.DebugFunc("[cc-go-debug] Default value was discovered for properties [%s]", propsName)
 	}
 	return nil
 }
@@ -184,10 +184,10 @@ func discoverActiveProfiles(vi *viper.Viper, reader ProfileReader, option Option
 			return err
 		}
 		if err := vi.MergeConfigMap(cfMap); err != nil {
-			return fmt.Errorf("[GoLib-error] Error when read active profile [%s] in paths [%s]: %v",
+			return fmt.Errorf("[cc-go-error] Error when read active profile [%s] in paths [%s]: %v",
 				activeProfile, debugPaths, err)
 		}
-		option.DebugFunc("[GoLib-debug] Active profile [%s] was loaded", activeProfile)
+		option.DebugFunc("[cc-go-debug] Active profile [%s] was loaded", activeProfile)
 	}
 	return nil
 }
